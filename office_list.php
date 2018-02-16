@@ -9,7 +9,7 @@
 	}
 
 	// Query to get all offices and show amount of cars in each office
-	$queryOffice = "SELECT office_name, office_location, COUNT(cars.car_id) AS car_number FROM offices LEFT JOIN cars ON offices.office_id = cars.fk_office_id GROUP BY offices.office_name ORDER BY car_number DESC";
+	$queryOffice = "SELECT office_name, office_location, COUNT(cars.car_id) AS car_number FROM offices LEFT JOIN cars ON offices.office_id = cars.fk_office_id GROUP BY offices.office_name ORDER BY car_number DESC, office_name ";
 	$resultOffice = mysqli_query($conn, $queryOffice);
 	
 	
@@ -31,7 +31,7 @@
 			<tr>
 				<th>Office Name</th>
 				<th>Office Location</th>
-				<th>Number of cars</th>
+				<th>Number of avilable cars</th>
 			</tr>
 			<?php 
 				while($rowOffice = mysqli_fetch_assoc($resultOffice)) {
@@ -47,7 +47,7 @@
 			?>
 		</table>
 	</div>
-	</div>
+	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

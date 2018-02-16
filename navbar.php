@@ -29,7 +29,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navb">
-    <ul class="navbar-nav mr-auto offset-1">
+    <ul class="navbar-nav mr-auto offset-lg-1">
       <li class="nav-item">
 	  	<a class="nav-link" href="home.php">Home</a>
       </li>
@@ -37,7 +37,10 @@
 	  	<a class="nav-link" href="office_list.php">Our Offices</a>
       </li>
       <li class="nav-item ml-lg-4">
-	  	<a class="nav-link" href="cars_list.php">Book a Car</a>
+	  	<a class="nav-link" href="cars_locations.php">Book a Car</a>
+      </li>
+      <li class="nav-item ml-lg-4">
+	  	<a class="nav-link" href="cars_list.php">Cars we have</a>
       </li>
 
     </ul>

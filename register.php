@@ -149,7 +149,7 @@
 
 
       <div class="form-group">
-        <input type="email" name="email" class="form-control" placeholder="Enter Your Email" maxlength="40" value="<?php echo $email ?>" />
+        <input type="email" name="email" class="form-control" placeholder="Enter Your Email. You will need it to login. Cannot be changed later!" maxlength="40" value="<?php echo $email ?>" />
         <span class="text-danger"><?php echo $emailError; ?></span>
       </div>
       
