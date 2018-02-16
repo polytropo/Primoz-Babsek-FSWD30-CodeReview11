@@ -11,16 +11,22 @@
 	// Check if filter is applied
 	if(isset($_POST['myOfficeSelect'])) {
 		$selectValue = $_POST['myOfficeSelect'];
+		if ($selectValue == 'showAll')	{
+		// Query to select all cars and show their current locations if available and no filter is applied
+		$queryCars = "SELECT * FROM cars INNER JOIN offices ON cars.fk_office_id = offices.office_id ORDER BY car_name ";
+		$resultCars = mysqli_query($conn, $queryCars);
 
-		// Query to show only selected filter cars
-		$queryCars = "SELECT * FROM cars INNER JOIN offices ON cars.fk_office_id = offices.office_id  WHERE cars.fk_office_id = $selectValue ORDER BY cars.car_name ";
+		} else {
+
+			// Query to show only selected filter cars
+			$queryCars = "SELECT * FROM cars INNER JOIN offices ON cars.fk_office_id = offices.office_id  WHERE cars.fk_office_id = $selectValue ORDER BY cars.car_name ";
 			$resultCars = mysqli_query($conn, $queryCars);
-	} else {
+		}
+	} else { 
 		// Query to select all cars and show their current locations if available and no filter is applied
 		$queryCars = "SELECT * FROM cars INNER JOIN offices ON cars.fk_office_id = offices.office_id ORDER BY car_name ";
 		$resultCars = mysqli_query($conn, $queryCars);
 	}
-
 	
 	
 	
@@ -50,13 +56,15 @@
 				<form method="post" action="" >
 	                <label for="filter">Only show cars available at:</label>
 	                <select id="filter" name="myOfficeSelect" class="form-control">
-	                <?php while($rowOffices = mysqli_fetch_assoc($resultOffices)) 
-	                	{ 
-                	?>
-	                	<option value="<?php echo $rowOffices['office_id'] ?>"><?php echo $rowOffices['office_location'] ?></option>
-	                <?php 
-	                	} 
-	                ?>
+	                	<option value="showAll">Show All Locations</option>
+	                	<?php while($rowOffices = mysqli_fetch_assoc($resultOffices)) 
+	                		{ 
+                		?>
+	                		<option value="<?php echo $rowOffices['office_id'] ?>"><?php echo $rowOffices['office_location'] ?></option>
+	                	<?php 
+	                		} 
+	                	?>
+	                	
 	                </select>
 	                <input class="btn btn-primary my-2" name="submit" type="submit" value="Apply Filter">
            		</form>
