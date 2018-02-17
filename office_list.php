@@ -9,7 +9,7 @@
 	}
 
 	// Query to get all offices and show amount of cars in each office
-	$queryOffice = "SELECT office_name, office_location, COUNT(cars.car_id) AS car_number FROM offices LEFT JOIN cars ON offices.office_id = cars.fk_office_id GROUP BY offices.office_name ORDER BY car_number DESC, office_name ";
+	$queryOffice = "SELECT office_name, office_location, COUNT(cars.car_id) AS car_number FROM offices LEFT JOIN cars ON offices.office_id = cars.fk_office_id WHERE cars.longitude IS NULL AND cars.latitude IS NULL GROUP BY offices.office_name ORDER BY car_number DESC, office_name ";
 	$resultOffice = mysqli_query($conn, $queryOffice);
 	
 	

@@ -33,7 +33,18 @@
 
 					<img src="<?php echo $rowCars['image_url'] ?>"  style="width: 100%;"></img>
 					<p class="h4"><?php echo $rowCars['car_name'] ?></p>
-					<div class="py-3"><p>Type of car: <?php echo $rowCars['car_type'] ?></p></div>
+					<p class="lead">
+					<!-- - - - - Check if car is rented - then it has longitude and latitude - - - -  -->
+					<?php if ($rowCars['longitude'] != "" && $rowCars['latitude'] != "")	{ 
+							echo "This car is currently rented!";
+							} else {
+								echo "Rent this car right now";
+							}
+					?>
+					</p>
+					<!-- - - - -  -->
+					<div class="py-3"><p>Type of car: <?php echo $rowCars['car_type'] ?></p>
+					</div>
 					<hr class="py-3">
 				</div>
 			<?php 

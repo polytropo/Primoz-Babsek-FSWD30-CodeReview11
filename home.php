@@ -133,7 +133,7 @@
 			<table class="table table-dark">
 				<tr>
 					<th>Borrowed On: </th>
-					<th> Returned On: </th>
+					<th> Return Date: </th>
 					<th> Car: </th>
 				</tr>
 				<?php
