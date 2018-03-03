@@ -112,6 +112,7 @@
 				}
 			?>
 		</table>
+		
 		<h1 class="pt-5">Locations of all cars</h1>
 		<p class="">If a car is on the road and currently unavailable you will see it marked as redIcon. You can also see our locations with blueIcon.</p>
 		<div id="map"></div>
@@ -121,12 +122,25 @@
 	<!-- - - - - - - - -   Code for google maps - - - - - - - - -  -->
 	<script src="script.js"></script>
 	<script>
-
+		// var data;
+		
+		// readFile("officesdata.json", function(text){
+		// data = JSON.parse(text);
+		// mybla = data[0].latitude;
+		// });
+		// console.log(data);
+		// ******-------------********
+		// var offLat;
+		// function preload() {
+		// 	offLat = loadJson("officesdata.json");
+		// }
+		// console.log(offLat[0].latitude);
+		// * ** * Google maps function * * * * - - - - - 
 		function initMap(){
 		  // Map options
 		  
 		  var options = {
-		    zoom:12,
+		    zoom:11,
 		    center:{lat:48.2078430,lng:16.4377690}
 		  }
 
@@ -160,6 +174,7 @@
 
 		
 		function officeMarkers(longitude, latitude, image, text) {
+			
 			new google.maps.Marker({
 				
 				position:{lat:parseFloat(longitude),lng:parseFloat(latitude)},
@@ -170,12 +185,13 @@
 			});
 		}
 
-
+		
 		var markerOffice1 = officeMarkers(48.178047, 16.394657,image2,'Office 1');
 		var markerOffice2 = officeMarkers(48.178761, 16.375388,image2,'Office 2');
 		var markerOffice3 = officeMarkers(48.225202, 16.342203,image2,'Office 3');
 		var markerOffice4 = officeMarkers(48.215956, 16.385990,image2,'Office 4');
 		var markerCar1 = officeMarkers(48.214627, 16.393657,image1,'Car 3');
+		var markerCar2 = officeMarkers(48.169975, 16.347747,image1,'Car 1');
 		
 
 		// var infoWindow = new google.maps.InfoWindow({

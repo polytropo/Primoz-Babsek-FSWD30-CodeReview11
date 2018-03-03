@@ -10,8 +10,8 @@ function readFile(file, callback) {
 
         if (rawFile.readyState === 4 && rawFile.status == "200") {
 
-            callback(rawFile.responseText);
-
+          callback(rawFile.responseText);
+          
         }
 
     }
@@ -21,13 +21,4 @@ function readFile(file, callback) {
 }
 
 
-//usage:
-
-readFile("officesdata.json", function(text){
-
-    data = JSON.parse(text);
-    console.log(data);
-
-
-});
 

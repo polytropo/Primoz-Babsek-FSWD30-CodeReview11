@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2018 at 12:12 PM
+-- Generation Time: Feb 17, 2018 at 01:59 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -43,7 +43,7 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`car_id`, `car_name`, `image_url`, `car_type`, `fk_office_id`, `latitude`, `longitude`) VALUES
-(1, 'Seat Ibiza 2.0', 'https://cdn.euroncap.com/media/29352/seat-ibiza-359-235.jpg', 'sports car', 1, '48.1699750', '16.3477470'),
+(1, 'Seat Ibiza 2.0', 'https://cdn.euroncap.com/media/29352/seat-ibiza-359-235.jpg', 'sports car', 1, NULL, NULL),
 (2, 'Nissan Leaf', 'https://www.nissan-cdn.net/content/dam/Nissan/nissan_europe/vehicles/leaf/B12P/pre-sell/18tdieulhd-leafhelios001.jpg.ximg.l_full_m.smart.jpg', 'family ', 1, NULL, NULL),
 (3, 'Volvo XC60', 'https://images.derstandard.at/img/2017/12/11/Volvo-xc60-001.jpg?tc=e704&s=bb10d9bce5ddc2580cd13b3d592ba8c7', 'suv, family car', 1, '48.2078430', '16.4377690'),
 (4, 'Honda Accord 2.2', 'https://media.ed.edmunds-media.com/honda/accord/2018/oem/2018_honda_accord_sedan_touring_fq_oem_7_1280.jpg', 'sports car', 1, NULL, NULL),
@@ -53,7 +53,7 @@ INSERT INTO `cars` (`car_id`, `car_name`, `image_url`, `car_type`, `fk_office_id
 (8, 'Cadillac Escalade', 'http://www.cadillaccanada.ca/content/dam/Cadillac/northamerica/ca/nscwebsite/en/home/vehicles/crossovers_and_suvs/2018_vehicles/2018_Escalade/Model_Overview/Shopping_Tools/CA-2018-escalade-baseball-511x311.png', 'suv, luxury', 2, NULL, NULL),
 (9, 'Ford Edge', 'https://www.ford.com/cmslibs/content/dam/vdm_ford/live/en_us/ford/nameplate/edge/2017/collections/highlights/3-2/SUV-Awards-5Star-17Edge-2160x1440.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg', 'family car', 3, NULL, NULL),
 (10, 'Honda CR-V', 'https://file.kbb.com/kbb/vehicleimage/evoxseo/cp/l/11813/2017-honda-cr-v-front_11813_032_640x480_wa.png', 'family car, suv', 3, NULL, NULL),
-(11, 'Lincoln MKX', 'http://www.autoguide.com/blog/wp-content/uploads/2016/07/2016-Lincoln-MKZ-vs-Lexus-RX-350-hero-1.jpg', 'family car', 4, NULL, NULL),
+(11, 'Lincoln MKX', 'https://www.lincoln.com/cmslibs/content/dam/vdm_ford/live/en_us/lincoln/nameplate/mkx/2018/collections/adplanner/thumb_navigation_18mkx.jpg', 'family car', 4, NULL, NULL),
 (12, 'Mercedes AMG S3', 'http://st.motortrend.com/uploads/sites/5/2013/03/2014-Mercedes-Benz-CLA45-AMG-front-three-quarter11.jpg?interpolation=lanczos-none&fit=around|660:412', 'sports car, luxury', 4, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -122,9 +122,7 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`order_id`, `fk_email`, `fk_car_id`, `start_date`, `return_date`) VALUES
 (1, 'primoz@gmail.com', 9, '2018-01-08', '2018-01-10'),
 (2, 'primoz2@gmail.com', 3, '2018-02-13', '2018-02-14'),
-(3, 'primoz@gmail.com', 3, '2018-02-17', '2018-02-25'),
-(4, 'primoz2@gmail.com', 1, '2018-02-17', '2018-02-23'),
-(5, 'primoz2@gmail.com', 6, '2018-03-02', '2018-03-16');
+(3, 'primoz@gmail.com', 3, '2018-02-17', '2018-02-25');
 
 --
 -- Indexes for dumped tables
@@ -176,7 +174,7 @@ ALTER TABLE `offices`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --

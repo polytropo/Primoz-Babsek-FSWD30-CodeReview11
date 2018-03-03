@@ -8,10 +8,21 @@
 		exit;
 	}
 
-	// Query to select all cars
-	$queryCars = "SELECT * FROM cars";
-	$resultCars = mysqli_query($conn, $queryCars);
+	// // Query to select all cars
+	// $queryCars = "SELECT * FROM cars";
+	// $resultCars = mysqli_query($conn, $queryCars);
 
+
+	// Query to show dates when cars will be available
+	$queryOrder = "SELECT * FROM orders ";
+	$queryOrder .= "RIGHT JOIN cars ON orders.fk_car_id = cars.car_id GROUP BY cars.car_name ORDER BY cars.car_name ";
+	$resultOrder = mysqli_query($conn, $queryOrder);
+
+	// Show that car is booked for 2 more days than actually is
+	// while($rowOrder = mysqli_fetch_assoc($resultOrder)) {
+	// 	$returnDate = $rowOrder['return_date'];
+	// 	echo date('Y-m-d', strtotime($returnDate. ' + 2 days')) . "<br>";
+	// }
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +31,11 @@
 	<meta charset="UTF-8">
 	<title>Offices</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style type="text/css" media="screen">
+		.strong {
+			font-weight: 400;
+		}
+	</style>
 </head>
 <body>
 	<?php include "navbar.php"; ?>
@@ -27,19 +43,28 @@
 		<p class="h2">All of the cars that we have: </p>
 		<div class="row">
 			
-			<?php while ($rowCars = mysqli_fetch_assoc($resultCars)) {
+			<?php while ($rowCars = mysqli_fetch_assoc($resultOrder)) {
 			?>
-				<div class="col-sm-10 col-md-6 col-lg-4">
+				<div class="col-sm-10 col-md-6 col-lg-4 align-items-stretch">
 
 					<img src="<?php echo $rowCars['image_url'] ?>"  style="width: 100%;"></img>
 					<p class="h4"><?php echo $rowCars['car_name'] ?></p>
 					<p class="lead">
-					<!-- - - - - Check if car is rented - then it has longitude and latitude - - - -  -->
-					<?php if ($rowCars['longitude'] != "" && $rowCars['latitude'] != "")	{ 
-							echo "This car is currently rented!";
-							} else {
-								echo "Rent this car right now";
-							}
+					
+					<?php
+						$returnDate = $rowCars['return_date'];
+						// Put date of possible booking 2 days after the car will be received
+						$returnDate = date('Y-m-d', strtotime($returnDate. ' + 2 days'));
+						
+						$date = date('Y-m-d');
+						
+						if ($returnDate >= $date) {
+							
+							echo "You can book this car on: <br><span class='strong'>" . $returnDate . "</span>";
+						
+						} else {
+							echo "<span class='strong'>You can book this car right now!</span> ";
+						}
 					?>
 					</p>
 					<!-- - - - -  -->
