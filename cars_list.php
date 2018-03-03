@@ -40,6 +40,7 @@
 <body>
 	<?php include "navbar.php"; ?>
 	<div class="container">
+		<p class="text-danger">Note: Online booking system is not working yet, we are working hard to implement it asap.</p>
 		<p class="h2">All of the cars that we have: </p>
 		<div class="row">
 			
@@ -53,20 +54,24 @@
 					
 					<?php
 						$returnDate = $rowCars['return_date'];
-						// Put date of possible booking 2 days after the car will be received
-						$returnDate = date('Y-m-d', strtotime($returnDate. ' + 2 days'));
 						
 						$date = date('Y-m-d');
 						
 						if ($returnDate >= $date) {
+							// Put date of possible booking 2 days after the car will be received
+							$returnDate = date('Y-m-d', strtotime($returnDate. ' + 2 days'));
 							
 							echo "You can book this car on: <br><span class='strong'>" . $returnDate . "</span>";
 						
 						} else {
-							echo "<span class='strong'>You can book this car right now!</span> ";
+							echo '<span class="strong">You can book this car right now!</span> 
+								<br><button id="' . $rowCars['car_id'] .'" type="button" class="btn btn-primary">Book Now</button>
+								
+							';
 						}
 					?>
 					</p>
+
 					<!-- - - - -  -->
 					<div class="py-3"><p>Type of car: <?php echo $rowCars['car_type'] ?></p>
 					</div>
