@@ -37,7 +37,7 @@
 	  	<a class="nav-link" href="office_list.php">Our Offices</a>
       </li>
       <li class="nav-item ml-lg-4">
-	  	<a class="nav-link" href="cars_locations.php">Book a Car</a>
+	  	<a class="nav-link" href="cars_locations.php">Available cars</a>
       </li>
       <li class="nav-item ml-lg-4">
 	  	<a class="nav-link" href="cars_list.php">Cars we have</a>
